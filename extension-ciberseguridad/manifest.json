@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Asistente de Ciberseguridad (Ollama + RAG)",
+  "version": "1.0.0",
+  "description": "Asistente local de ciberseguridad con RAG sobre Ollama. Funciona en tu equipo, sin enviar datos a terceros.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Asistente de ciberseguridad",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["sidePanel", "storage", "unlimitedStorage", "declarativeNetRequest"],
+  "host_permissions": ["http://127.0.0.1:11434/*", "http://localhost:11434/*"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ollama_origin",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
+}

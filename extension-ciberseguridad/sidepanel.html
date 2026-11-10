@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Asistente de ciberseguridad</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <header>
+    <div class="title">🛡️ Asistente de ciberseguridad</div>
+    <span id="status" class="status off">● comprobando…</span>
+    <button id="btnSettings" class="icon-btn" title="Ajustes y documentos" aria-label="Ajustes">⚙️</button>
+  </header>
+
+  <div id="banner" class="banner hidden" role="status"></div>
+
+  <section id="settings" class="settings hidden">
+    <label>Modelo de chat
+      <select id="modelSelect"></select>
+    </label>
+    <label>Fragmentos de contexto (top-K): <b id="topKValue">4</b>
+      <input id="topK" type="range" min="1" max="8" value="4">
+    </label>
+
+    <h3>📄 Base de conocimiento</h3>
+    <ul id="docList" class="doc-list"></ul>
+    <div class="row">
+      <label class="btn">Añadir documentos (.md / .txt)
+        <input id="fileInput" type="file" accept=".md,.txt,text/plain,text/markdown" multiple hidden>
+      </label>
+      <button id="btnReindex" class="btn">Reindexar</button>
+    </div>
+
+    <div class="row">
+      <button id="btnClear" class="btn">🗑️ Borrar conversación</button>
+    </div>
+  </section>
+
+  <main id="messages" aria-live="polite"></main>
+
+  <div id="examples" class="examples">
+    <button class="chip">¿Cómo configuro SSH de forma segura?</button>
+    <button class="chip">¿Qué es el quishing y cómo me protejo?</button>
+    <button class="chip">Plan de copias de seguridad para una pyme</button>
+    <button class="chip">Pasos si he caído en un phishing</button>
+  </div>
+
+  <footer>
+    <textarea id="input" rows="2" placeholder="Escribe tu pregunta sobre seguridad… (Enter para enviar)"></textarea>
+    <div class="actions">
+      <button id="send" class="primary">Enviar</button>
+      <button id="stop" class="hidden">Detener</button>
+    </div>
+  </footer>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>
